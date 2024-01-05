@@ -1,5 +1,4 @@
 # Imports all the crucial items.
-# All pre-installed besides Netmiko.
 from csv import reader
 import logging
 from netmiko import ConnectHandler
