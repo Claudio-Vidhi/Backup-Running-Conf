@@ -23,7 +23,7 @@ def sanitize_filename(filename):
     return filename
 
 #Retrieves and saves the running configuration of HP switches
-def get_saved_config_HP_arvedi(host, username, password, enable_secret):
+def get_saved_config_HPE(host, username, password, enable_secret):
     hp_procurve = {
         'device_type': 'hp_procurve',
         'host': host,
@@ -62,7 +62,7 @@ def get_saved_config_HP_arvedi(host, username, password, enable_secret):
         logging.error(f"Error processing {host}: {str(e)}")
 
 # Retrieves CSV file path and processes HP devices for backup
-def csv_option_HP_arvedi():
+def csv_option_HPE():
     csv_name = input("\nWhat is the name of the path of your CSV file for HP devices?: ")
     with open(csv_name, 'r') as read_obj:
         csv_reader = reader(read_obj)
@@ -76,16 +76,16 @@ def csv_option_HP_arvedi():
                 
                 ip_ping = ping(ip)
                 if ip_ping is None:
-                    fileName = "down_HP_arvedi_"+ ip + ".txt"
+                    fileName = "down_HPE"+ ip + ".txt"
                     downDeviceOutput = open("backup-config/" + fileName, "a")
                     downDeviceOutput.write(str(ip) + "\n")
                     print(str(ip) + " is down!")
                 else:
-                    get_saved_config_HP_arvedi(ip, username, password, enable_secret)
+                    get_saved_config_HPE(ip, username, password, enable_secret)
             else:
                 print("Skipping row:", row, "as it does not have the expected number of values.")
                 
 # Executes the function to process HP devices from the provided CSV file
-csv_option_HP_arvedi()
+csv_option_HPE()
 
 
