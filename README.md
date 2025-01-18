@@ -1,26 +1,3 @@
-# HPE-ARUBA Switch Configuration Backup
-
-This Python script is designed to automate the backup of HP ProCurve switch configurations. It utilizes Netmiko for SSH connectivity, ping3 for device reachability checks, and regular expressions for parsing switch information.
-
-## Features:
-
-- **Folder Validation:**
-  - The script checks for the existence of a 'backup-config' folder and creates it if not present.
-
-- **Filename Sanitization:**
-  - Invalid characters in switch hostnames are replaced with underscores for use in filenames.
-
-- **HP Switch Configuration Backup:**
-  - Connects to HPE switches using Netmiko.
-  - Retrieves the running configuration.
-  - Extracts the hostname using regular expressions.
-  - Saves the configuration to a text file in the 'backup-config' folder.
-
-- **CSV Processing for HP Devices:**
-  - Reads a CSV file containing switch details (IP, username, password, enable secret).
-  - Checks device reachability using ping.
-  - Backs up the configuration if reachable, logs unreachable devices.
-
 ## Usage:
 
 1. Install required libraries: pip install netmiko ping3
